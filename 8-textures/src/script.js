@@ -86,6 +86,19 @@ colorTexture.minFilter = THREE.LinearFilter;
 // Better performance
 colorTexture.magFilter = THREE.NearestFilter;
 
+// When creating textures need to think of three things:
+// 1. Weight
+// Use jpg (lossy, but lighter) or png (lossless, but heavier)
+// 2. Size
+// Each pixel of the texture will be stored on the GPU
+// GPU has storage limitations
+// Even worse because minmapping increases twice as many pixels
+// If using mipmapping, pixels need to be a power of 2 (Otherwise threeJS will resize)
+// 3. Data
+// Textures support transparency (only in png)
+// If we use a normal texture, we need the exact values (should use png (lossless))
+// Sometimes combine different data into one texture by using RGB channels seperatly
+
 /**
  * Base
  */
